@@ -6,7 +6,7 @@ import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-
+import { BACKGROUND_IMAGE,USER_LOGO } from '../utils/constant';
 const Login = () => {
 
 const [isSignInForm ,setIsSignInForm] = useState(true);
@@ -31,11 +31,10 @@ if(!isSignInForm){
     const user = userCredential.user;
 
     updateProfile(user, {
-      displayName: name.current.value, photoURL: "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
+      displayName: name.current.value, photoURL: USER_LOGO
     }).then(() => {
       const {uid,email,displayName,photoURL} = auth.currentUser;
       dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
-      navigate("/browse");
     }).catch((error) => {
       setErrorMessage(error.message);
     });
@@ -55,7 +54,7 @@ if(!isSignInForm){
  signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
     const user = userCredential.user;
-    navigate("/browse")
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -78,7 +77,7 @@ const toggleSignIn = ()=>{
     <div>
         <Header />
     <div className='absolute w-full'>
-      <img className="w-full" src='https://assets.nflxext.com/ffe/siteui/vlv3/a99688ca-33c3-4099-9baa-07a2e2acb398/ca15fd28-b624-4852-8bfe-9cdd5c88475d/IN-en-20240520-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+      <img className="w-full" src={BACKGROUND_IMAGE}
        alt="bgLogo" />
        </div>
        <form onSubmit={(e)=>e.preventDefault()}className=' bg-black absolute p-12 w-[20%] my-96 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 '>

@@ -25,7 +25,10 @@
 - Update the store with the trailer video
 - embeded youtuve video and make it autoplay and mute
 - use tailwind to make it looks good as netflix 
-
+- create the secondary container for the movies list
+- create movies list and under create movie cards for the movies 
+- fetch the api for the nowplaying movies,toprated,popular, and upcoming movies
+- use tailwind to looks good for the cards 
 
 #Feature 
 
